@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<!-- jQuery -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<!-- custom css -->
+	<link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+ 	<div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+	    <div class="navbar-header">
+	     	<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+	      </button>
+	      <!-- Home Icon -->
+	      <a class="navbar-brand" href="/"><img class="logo" src="/images/movie.png"></a>
+
+	    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+	    	<form class="navbar-form navbar-right">
+				<div class="form-group">
+					<input type="text" class="form-control" placeholder="Search">
+				</div>
+				<button type="button" class="btn btn-default search-button">Search</button>
+	    	</form>
+
+			<ul class="nav navbar-nav navbar-right">
+
+			<!-- Genre Section -->
+				<li class="dropdown">
+          		<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Genre <span class="caret"></span></a>
+          		<ul class="dropdown-menu">
+					<li><a href="/genre/28" class="genre" id="28">Action</a></li>
+					<li><a href="/genre/12" class="genre" id="12">Adventure</a></li>
+					<li><a href="/genre/16" class="genre" id="16">Animation</a></li>
+					<li><a href="/genre/35" class="genre" id="35">Comedy</a></li>
+					<li><a href="/genre/80" class="genre" id="80">Crime</a></li>
+					<li><a href="/genre/99" class="genre" id="99">Documentary</a></li>
+					<li><a href="/genre/18" class="genre" id="18">Drama</a></li>
+					<li><a href="/genre/10751" class="genre" id="10751">Family</a></li>
+					<li><a href="/genre/14" class="genre" id="14">Fantasy</a></li>
+					<li><a href="/genre/36" class="genre" id="36">History</a></li>
+					<li><a href="/genre/27" class="genre" id="27">Horror</a></li>
+					<li><a href="/genre/10402" class="genre" id="10402">Music</a></li>
+					<li><a href="/genre/9648" class="genre" id="9648">Mystery</a></li>
+					<li><a href="/genre/10749" class="genre" id="10749">Romance</a></li>
+					<li><a href="/genre/878" class="genre" id="878">Science Fiction</a></li>
+					<li><a href="/genre/10770" class="genre" id="10770">TV Movie</a></li>
+					<li><a href="/genre/53" class="genre" id="53">Thriller</a></li>
+					<li><a href="/genre/10752" class="genre" id="10752">War</a></li>
+					<li><a href="/genre/37" class="genre" id="37">Western</a></li>
+          		</ul>
+        		</li>
+
+
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Now Playing <span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a href="#">Title</a></li>
+						<li><a href="#">Actor</a></li>
+						<li><a href="#">TV Show</a></li>
+						<li role="separator" class="divider"></li>
+						<li><a href="/">Now Playing</a></li>
+					</ul>
+				</li>
+			</ul>
+
+	    </div><!-- /.navbar-collapse -->
+	</div><!-- /.container-fluid -->
+</nav>
+
+
+	<div class="container">
+		<!-- Displaying movie posters for all search results -->
+		<% movieData.results.map((movie, index) => { %>
+			<div class="col-sm-4">
+				<% if(movie.poster_path == '/images/Keep-Calm-Poster-Not-Found.png') { %>
+					<img src="<%= movie.poster_path %>">
+				<%	}
+				else { %>
+					<img src="<%=imageUrl + movie.poster_path %>">
+				<% } %>
+			</div>
+		<% }); %>
+
+	</div>
+
+
+
+</body>
+</html>
