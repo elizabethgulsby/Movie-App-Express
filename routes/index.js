@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var request = require('request');
 var config = require('../config/config');
+var currentFilter = 'Now Playing';
 
 
 /* GET home page - nowPlaying data shows on load */
@@ -31,6 +32,18 @@ router.get('/genre/:id', function(req, res, next) {
 	})
 })
 
+//Search for Now Playing route
+router.post('/NowPlaying', function(req, res, next) {
+	var searchTerms = encodeURI(req.body.search);
+	var movieTitleSearchUrl = config.movieTitleSearchBase + 'api_key=5847d8d10c644a674d1dbbc20b14230e' + '&language=en-US&page=1&include_adult=false&query=' + searchTerms;
+	// res.send("Hi there!");
+	request.get(movieTitleSearchUrl, (error, response, movieData) => {
+		movieData = JSON.parse(movieData);
+		console.log(movieData);
+	})
+})
+
+
 module.exports = router;
 
 //global functions
@@ -42,3 +55,6 @@ function posterNotFound(movieData) {
 	}
 	return movieData;
 }
+
+
+
