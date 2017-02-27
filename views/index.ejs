@@ -87,15 +87,28 @@
 
 
 	<div class="container">
-		<!-- Displaying movie posters for all search results -->
+		<!-- Displaying movie posters, actor photos, tv show posters for all search results -->
 		<% movieData.results.map((movie, index) => { %>
 			<div class="col-sm-4">
-				<% if(movie.poster_path == '/images/Keep-Calm-Poster-Not-Found.png') { %>
-					<img src="<%= movie.poster_path %>">
+				<%
+				if(movie.poster_path == '/images/Keep-Calm-Poster-Not-Found.png' && isMovie == 1) { %>
+					<img src="/images/Keep-Calm-Poster-Not-Found.png"> 
 				<%	}
-				else { %>
+				else if (isMovie == 1) { %>
 					<img src="<%=imageUrl + movie.poster_path %>">
-				<% } %>
+				<% }
+
+
+					if (movie.profile_path == '/images/photo-not-found.jpg' && isMovie == 0) {
+						%> <img src="/images/photo-not-found.jpg"> <%
+					} else if (isMovie == 0) { %>
+						<img src="<%= imageUrl + movie.profile_path %>">
+
+					<% }
+
+
+				 %>
+
 			</div>
 		<% }); %>
 
