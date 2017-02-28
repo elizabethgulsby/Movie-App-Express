@@ -13,6 +13,11 @@ img {
 	padding-bottom: 15px;
 }
 
+img:hover {
+	transform:  scale(1.05);
+	transition: ease-in;
+}
+
 .logo {
 	width: 80px;
 	height:  65px;

@@ -1,5 +1,6 @@
 var config = {
    baseUrl: 'http://api.themoviedb.org/3/',
+   movieIdSearch: 'https://api.themoviedb.org/3/movie/',
    imageBase: 'http://image.tmdb.org/t/p/w300',
    imageBaseFull: 'http://image.tmdb.org/t/p/original',
    nowPlayingEP: 'movie/now_playing?',

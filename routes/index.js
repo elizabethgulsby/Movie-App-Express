@@ -95,6 +95,20 @@ router.post('/TV%20Show', function(req, res, next) {
 
 })
 
+//get details page of any film clicked
+router.get('/results/:id', function(req, res, next) {
+	var infoQuery = config.movieIdSearch + req.params.id + '?api_key=5847d8d10c644a674d1dbbc20b14230e&language=en-US';
+	console.log(infoQuery);
+	request.get(infoQuery, (error, results, movieData) => {
+		movieData = JSON.parse(movieData);
+		// movieData = posterNotFound(movieData, true);
+		res.render('results', {
+			movieData: movieData,
+			imageUrl: config.imageBase
+		})
+	})
+})
+
 module.exports = router;
 
 //global functions
@@ -105,7 +119,7 @@ function posterNotFound(movieData, isMovie) {
 			movieData.results[i].poster_path = '/images/Keep-Calm-Poster-Not-Found.png';
 		}
 		if (movieData.results[i].profile_path == null && isMovie === false) {
-			movieData.results[i].profile_path = '/images/photo-not-found.jpg';
+			movieData.results[i].profile_path = '/images/photo-not-found.png';
 		}
 	}
 	return movieData;
