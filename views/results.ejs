@@ -1,13 +1,27 @@
 <%- include template.ejs %>
 
 <div class="container">
-	<div class="col-sm-3">
+	<div class="col-sm-4">
 		<img src="<%=imageUrl + movieData.poster_path %>" />
-		Title: "<%= movieData.title %>"
-
+		<a href="<%= movieData.homepage %>"><%=movieData.homepage %></a><br />
+		<% if (movieData2.results.length > 0) { %>
+			<a target="_blank" href="<%= YouTubeBase + movieData2.results[0].key %>"><%= movieData2.results[0].name %></a>
+		<% } %>
 	</div>
-
+	<div class="col-sm-8">
+		<h1><%= movieData.title %></h1>
+		<em><p>"<%= movieData.tagline %>"</p></em>
+		<p><%= movieData.release_date %></p>
+		<p class="vote-average"><%= movieData.vote_average %></p>
+		<p class="description"><%= movieData.overview %></p>
+		<% if (movieData.belongs_to_collection !== null) { %>
+			<p class="collection-name"><%= movieData.belongs_to_collection.name %></p> 
+			<img src="<%= imageUrl + movieData.belongs_to_collection.poster_path %>">
+		<% } %>
+		<% if (movieData.production_companies.length > 0) { %>
+			<p class="production-company"><%= movieData.production_companies[0].name %></p>
+		<% } %>
+	</div>
 </div>
 
-</body>
-</html>
+<%- include footer.ejs %>

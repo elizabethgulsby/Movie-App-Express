@@ -29,3 +29,11 @@ img:hover {
 .btn-group>.btn:first-child {
     margin-left: 520px;
 }
+
+h1, .description {
+	color:  white;
+}
+
+p {
+	color:  #9d9d9d;
+}

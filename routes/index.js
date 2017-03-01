@@ -99,14 +99,25 @@ router.post('/TV%20Show', function(req, res, next) {
 router.get('/results/:id', function(req, res, next) {
 	var infoQuery = config.movieIdSearch + req.params.id + '?api_key=5847d8d10c644a674d1dbbc20b14230e&language=en-US';
 	console.log(infoQuery);
-	request.get(infoQuery, (error, results, movieData) => {
+
+	movieData = request.get(infoQuery, (error, results, movieData) => {
 		movieData = JSON.parse(movieData);
-		// movieData = posterNotFound(movieData, true);
-		res.render('results', {
-			movieData: movieData,
-			imageUrl: config.imageBase
-		})
+
+		var trailerQuery = config.trailerBaseUrl + req.params.id + config.trailerEndUrl;
+
+		request.get(trailerQuery, (error2, results2, movieData2) => {
+				movieData2 = JSON.parse(movieData2);
+
+				res.render('results', {
+					movieData: movieData,
+					movieData2: movieData2,
+					imageUrl: config.imageBase,
+					YouTubeBase: config.YouTubeBase
+				})
+			})
+
 	})
+
 })
 
 module.exports = router;
