@@ -25,6 +25,9 @@ img:hover {
 	bottom: 15px;
 
 }
+.movie-title, .posters {
+	text-align: center;
+}
 
 .btn-group>.btn:first-child {
     margin-left: 520px;

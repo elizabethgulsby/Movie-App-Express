@@ -10,8 +10,10 @@
 	</div>
 	<div class="col-sm-8">
 		<h1><%= movieData.title %></h1>
-		<em><p>"<%= movieData.tagline %>"</p></em>
-		<p><%= movieData.release_date %></p>
+		<% if (movieData.tagline.length > 0) { %>
+			<em><p>"<%= movieData.tagline %>"</p></em>
+		<% } %>
+		<p class="release date">Release Date: <%= movieData.release_date %></p>
 		<p class="vote-average"><%= movieData.vote_average %></p>
 		<p class="description"><%= movieData.overview %></p>
 		<% if (movieData.belongs_to_collection !== null) { %>
