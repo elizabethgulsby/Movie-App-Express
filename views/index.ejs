@@ -9,7 +9,7 @@
 					<img src="/images/Keep-Calm-Poster-Not-Found.png"> 
 				<%	}
 				else if (isMovie == 1) { %>
-					<a href="/results/<%= movie.id %>"><img src="<%=imageUrl + movie.poster_path %>"></a>
+					<a href="/results/<%= movie.id %>"><img class="result" src="<%=imageUrl + movie.poster_path %>"></a>
 					<p class="movie-title"><%= movie.title %></p>
 				<% }
 
@@ -17,7 +17,7 @@
 					if (movie.profile_path == '/images/photo-not-found.png' && isMovie == 0) {
 						%> <img src="/images/photo-not-found.png"> <%
 					} else if (isMovie == 0) { %>
-						<img src="<%= imageUrl + movie.profile_path %>">
+						<img class="result" src="<%= imageUrl + movie.profile_path %>">
 
 					<% }
 

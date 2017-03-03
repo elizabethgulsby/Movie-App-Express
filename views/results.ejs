@@ -1,11 +1,11 @@
 <%- include template.ejs %>
 
-<div class="container">
+<div class="container results-container">
 	<div class="col-sm-4">
-		<img src="<%=imageUrl + movieData.poster_path %>" />
-		<a href="<%= movieData.homepage %>"><%=movieData.homepage %></a><br />
-		<% if (movieData2.results.length > 0) { %>
-			<a target="_blank" href="<%= YouTubeBase + movieData2.results[0].key %>"><%= movieData2.results[0].name %></a>
+		<a target="_blank" class="trailer" href="<%= YouTubeBase + movieData2.results[0].key %>"><img src="<%=imageUrl + movieData.poster_path %>" /></a>
+		<a class="homepage" href="<%= movieData.homepage %>"><%=movieData.homepage %></a><br />
+		<% if (movieData.production_companies.length > 0) { %>
+			<p class="production-company"><%= movieData.production_companies[0].name %></p>
 		<% } %>
 	</div>
 	<div class="col-sm-8">
@@ -14,14 +14,12 @@
 			<em><p>"<%= movieData.tagline %>"</p></em>
 		<% } %>
 		<p class="release date">Release Date: <%= movieData.release_date %></p>
-		<p class="vote-average"><%= movieData.vote_average %></p>
+		<p class="vote-average">Rating: <%= movieData.vote_average %></p>
+		<p class="runtime">Runtime: <%= movieData.runtime %> minutes</p>
 		<p class="description"><%= movieData.overview %></p>
 		<% if (movieData.belongs_to_collection !== null) { %>
 			<p class="collection-name"><%= movieData.belongs_to_collection.name %></p> 
-			<img src="<%= imageUrl + movieData.belongs_to_collection.poster_path %>">
-		<% } %>
-		<% if (movieData.production_companies.length > 0) { %>
-			<p class="production-company"><%= movieData.production_companies[0].name %></p>
+			<p class="collection-name"><img class="collection-image" src="<%= imageUrl + movieData.belongs_to_collection.poster_path %>">
 		<% } %>
 	</div>
 </div>
